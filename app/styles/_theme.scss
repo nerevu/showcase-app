@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('fonts/BankGothic-Light.otf?v=1.2.1') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('fonts/BankGothic-Medium.otf?v=1.2.1') format('otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+$headings-font-family: 'Bank Gothic', 'Lato';
+
+@import '_colors/signal';
+@import 'node_modules/bootstrap/scss/bootstrap';
