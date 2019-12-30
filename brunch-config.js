@@ -35,7 +35,10 @@ exports.config = {
       icons: ['node_modules/bootstrap-icons/icons'],
       verbose: true,
       onlyChanged: true
-    }
+    },
+    cachebust: {
+      manifest: 'public/cachebust-manifest.json'
+    },
   },
   server: {
     hostname: "0.0.0.0",
