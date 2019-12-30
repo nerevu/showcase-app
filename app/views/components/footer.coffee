@@ -1,5 +1,6 @@
 m = require 'mithril'
 helpers = require 'lib/helpers'
+utils = require 'lib/utils'
 
 year = (new Date()).getFullYear()
 
@@ -7,15 +8,18 @@ module.exports =
   view: (vnode) ->
     attrs = vnode.attrs
     links = attrs.links or []
-    # https://getbootstrap.com/docs/4.4/utilities/colors/#background-color
-    bgColor = attrs.bgColor or 'light'
-    textColor = if bgColor in helpers.lightModeColors then 'dark' else 'light'
+    colors = utils.getColors attrs
 
-    m "footer.bd-footer small text-#{textColor} mt-auto bg-#{bgColor}",
+    # https://getbootstrap.com/docs/4.4/utilities/colors/#background-color
+    footerColor = colors.footerColor or attrs.mode or 'dark'
+    textColor = colors.footerTextColor or helpers.getTextColor footerColor
+    linkColor = colors.footerLinkColor or helpers.getLinkColor footerColor
+
+    m "footer.bd-footer small mt-auto bg-#{footerColor} text-#{textColor}",
       m '.container py-3 py-md-5', [
         m 'p.mb-0', [
           "Copyright © #{year} "
-          m 'a.strong', {
+          m "a.strong text-#{linkColor}", {
             href: attrs.url
             oncreate: m.route.link
             onupdate: m.route.link
@@ -26,7 +30,7 @@ module.exports =
         if attrs.links?.length
           m 'ul.bd-footer-links mb-0 mt-3', attrs.links?.map (link) ->
             m 'li',
-              m 'a.strong', {
+              m "a.strong text-#{linkColor}", {
                 href: link.href
                 oncreate: m.route.link
                 onupdate: m.route.link

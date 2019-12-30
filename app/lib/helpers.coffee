@@ -3,6 +3,8 @@ m = require 'mithril'
 config = require 'config'
 devconfig = require 'devconfig'
 
+lightModeColors = ['light', 'white', 'transparent']
+
 remove = (orginal, toRemove) ->
   regex = "(^|\\b)#{toRemove.split(' ').join('|')}(\\b|$)"
   orginal.replace(new RegExp(regex, 'gi'), ' ')
@@ -91,4 +93,11 @@ module.exports =
       ''
 
   positions: ['1st', '2nd', '3rd', '4th']
-  lightModeColors: ['light', 'white', 'transparent']
+  getTextColor: (color) ->
+    if color in lightModeColors then 'dark' else 'light'
+
+  getModeColor: (color) ->
+    if color in lightModeColors then 'light' else 'dark'
+
+  getLinkColor: (color) ->
+    if color in lightModeColors then 'primary' else 'warning'
