@@ -13,7 +13,7 @@ module.exports = {
     url: '//',
     type: 'website',
     theme: 'greyson',
-    navbarColor: 'primary',
-    mode: 'white'
+    preset: 'classic',
+    overrides: {}
   }
 };

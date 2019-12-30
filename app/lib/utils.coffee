@@ -7,6 +7,73 @@ helpers = require 'lib/helpers'
 site = config.site
 author = config.author
 
+presets =
+  'default': {}
+  'classic':
+    navbarColor: 'primary'
+    jumboColor: 'light'
+    jumboTextColor: 'dark'
+    albumColor: 'white'
+    albumTextColor: 'dark'
+    footerColor: 'light'
+    footerTextColor: 'muted'
+
+  'classic-alt':
+    navbarColor: 'primary'
+    jumboColor: 'light'
+    jumboTextColor: 'dark'
+    albumColor: 'white'
+    albumTextColor: 'dark'
+    footerColor: 'secondary'
+    footerTextColor: 'light'
+    footerLinkColor: 'primary'
+
+  'bold':
+    navbarColor: 'light'
+    jumboColor: 'primary'
+    jumboTextColor: 'light'
+    albumColor: 'white'
+    albumTextColor: 'dark'
+    footerColor: 'light'
+    footerTextColor: 'dark'
+
+  'bold-alt':
+    navbarColor: 'light'
+    jumboColor: 'primary'
+    jumboTextColor: 'light'
+    albumColor: 'white'
+    albumTextColor: 'dark'
+    footerColor: 'secondary'
+    footerTextColor: 'light'
+    footerLinkColor: 'primary'
+
+  'cover':
+    navbarColor: 'primary'
+    jumboColor: 'primary'
+    jumboTextColor: 'light'
+    albumColor: 'primary'
+    albumTextColor: 'dark'
+    footerColor: 'primary'
+    footerTextColor: 'light'
+
+  'dark':
+    navbarColor: 'dark'
+    jumboColor: 'primary'
+    jumboTextColor: 'light'
+    albumColor: 'primary'
+    albumTextColor: 'dark'
+    footerColor: 'dark'
+    footerTextColor: 'light'
+
+  'album':
+    navbarColor: 'primary'
+    jumboColor: 'white'
+    jumboTextColor: 'dark'
+    albumColor: 'light'
+    albumTextColor: 'dark'
+    footerColor: 'white'
+    footerTextColor: 'dark'
+
 initSEO = (head) ->
   helpers.addMeta head, 'author', author.name
   helpers.addMeta head, 'description', site.description
@@ -56,3 +123,13 @@ module.exports =
     initSEO head
     initOpenGraph head
     initTwitter head
+
+  getColors: (attrs) ->
+    if attrs.colors
+      colors = attrs.colors
+    else if attrs.preset
+      colors = presets[attrs.preset]
+    else
+      colors = {}
+
+    Object.assign colors, attrs.overrides or {}
