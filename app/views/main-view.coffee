@@ -17,7 +17,7 @@ module.exports = (vnode, attrs) ->
       ]
     ]
 
-    m '.album.py-5',
+    m ".album.py-5 bg-#{site.mode}",
       m '.container',
         m '.row',
           m '.col-md-12',

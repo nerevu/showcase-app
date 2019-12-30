@@ -1,4 +1,20 @@
-@import 'theme';
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('fonts/BankGothic-Light.otf?v=1.2.1') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('fonts/BankGothic-Medium.otf?v=1.2.1') format('otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+$headings-font-family: 'Bank Gothic', 'Lato';
+
+@import 'colors';
+@import 'bootstrap';
 
 body {
   padding-top: 55px;

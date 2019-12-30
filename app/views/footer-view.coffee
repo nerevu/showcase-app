@@ -16,4 +16,4 @@ module.exports = (vnode, attrs) ->
   if site.sourceData
     links.push(href: site.sourceData, text: 'Data')
 
-  m Footer, Object.assign {links}, author
+  m Footer, Object.assign {links}, author, site
