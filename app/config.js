@@ -14,6 +14,10 @@ module.exports = {
     type: 'website',
     theme: 'greyson',
     preset: 'classic',
-    overrides: {}
+    overrides: {},
+    items: [
+      {title: 'Total Casualties', id: 'where', size: 5},
+      {title: 'Casualties over Time', id: 'flood-graph', size: 7}
+    ]
   }
 };

@@ -14,10 +14,11 @@ module.exports =
     m ".album.py-5 bg-#{albumColor} text-#{textColor}",
       m '.container',
         m '.row',
-          m '.col-md-12',
-            m '.card.mb-12.shadow-sm',
-              m '.card-body', [
-                m 'p.card-text', attrs.title
-                m '.d-flex.justify-content-between.align-items-center',
-                  m 'small.text-muted', attrs.description
-              ]
+          attrs.items.map (item) ->
+            m ".col-md-#{item.size}",
+              m ".card.mb-#{item.size}.shadow-sm",
+                m '.card-body', [
+                  m 'p.card-text', item.title
+                  m '.d-flex.justify-content-between.align-items-center',
+                    m "##{item.id}"
+                ]
